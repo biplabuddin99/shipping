@@ -20,7 +20,7 @@
     <body class="authentication-bg">
 
         <div class="home-btn d-none d-sm-block">
-            <a href="{{route('front.home')}}"><i class="fas fa-home h2 text-dark"></i></a>
+            <a href=""><i class="fas fa-home h2 text-dark"></i></a>
         </div>
         @yield('content')
         <!-- Vendor js -->

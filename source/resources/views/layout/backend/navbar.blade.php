@@ -6,9 +6,9 @@
                 <li class="has-submenu">
                     <a href="{{route(Session::get('identity').'.dashboard')}}"><i class="mdi mdi-view-dashboard"></i>Dashboard</a>
                 </li>
-                {{--<li class="has-submenu">
-                    <a href="{{route(Session::get('identity').'.manufacturer.index')}}"><i class="mdi mdi-factory"></i>Manufacturer</a>
-                </li>--}}
+                <li class="has-submenu">
+                    <a href="{{route(Session::get('identity').'.company.index')}}"><i class="mdi mdi-factory"></i>Company setting</a>
+                </li>
                 
 
                 {{--<li class="has-submenu">
