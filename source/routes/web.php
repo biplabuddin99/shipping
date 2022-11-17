@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Authcontroller;
@@ -53,6 +54,8 @@ Route::group(['middleware'=>'isSuperadmin'],function(){
             Route::post('/company','store')->name('superadmin.company.store');
             Route::get('/company/edit','edit')->name('superadmin.company.edit');
             Route::post('/company/edit/{id}','update')->name('superadmin.company.update');
+
+            Route::resource('service',ServiceController::class,['as'=>'superadmin']);
         });
         /*Route::group(['controller' => HomeSection1Controller::class], function(){
             Route::get('/indexsec1', 'index')->name('superadmin.homesec1.index');
