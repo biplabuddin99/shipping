@@ -9,7 +9,10 @@
                 <li class="has-submenu">
                     <a href="{{route(Session::get('identity').'.company.index')}}"><i class="mdi mdi-factory"></i>Company setting</a>
                 </li>
-                
+                <li class="has-submenu">
+                    <a href="{{route(Session::get('identity').'.headerLogo.index')}}"><i class="mdi mdi-factory"></i>headerLogo setting</a>
+                </li>
+
 
                 {{--<li class="has-submenu">
                     <a href="#">
@@ -19,7 +22,7 @@
                             <a href="#">Home Page <div class="arrow-down"></div></a>
                             <ul class="submenu">
                                 <li><a href="{{route(Session::get('identity').'.headerview.index')}}">Header</a></li>
-                                
+
                             </ul>
                         </li>
                         <li class="has-submenu">
@@ -36,7 +39,7 @@
                                 </li>
                             </ul>
                         </li>
-                        
+
                     </ul>
                 </li>--}}
             </ul>

@@ -7,6 +7,9 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Authcontroller;
+use App\Models\HeaderLogo;
+use App\Http\Controllers\HeaderLogoController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,8 +47,11 @@ Route::group(['middleware'=>'isSuperadmin'],function(){
             Route::get('/profile', 'profile')->name('superadmin.profile');
             Route::post('/profile_update/{id}','profile_update')->name('superadmin.profile_update');
         });
-        
-        
+
+        //header Logo
+        Route::resource('headerLogo',HeaderLogoController::class,['as'=>'superadmin']);
+        Route::resource('product',ProductController::class,['as'=>'superadmin']);
+
         //Route::resource('phoneext', PhoneExtController::class,['as'=>'superadmin']);
         Route::group(['controller' => CompanyController::class], function(){
             Route::get('/company', 'index')->name('superadmin.company.index');
@@ -54,6 +60,13 @@ Route::group(['middleware'=>'isSuperadmin'],function(){
             Route::get('/company/edit','edit')->name('superadmin.company.edit');
             Route::post('/company/edit/{id}','update')->name('superadmin.company.update');
         });
+        // Route::group(['controller' => HeaderLogoController::class], function(){
+        //     Route::get('/headerLogo', 'index')->name('superadmin.headerLogo.index');
+        //     Route::get('/headerLogo/create','create')->name('superadmin.headerLogo.create');
+        //     Route::post('/headerLogo','store')->name('superadmin.headerLogo.store');
+        //     Route::get('/headerLogo/edit','edit')->name('superadmin.headerLogo.edit');
+        //     Route::post('/headerLogo/edit/{id}','update')->name('superadmin.headerLogo.update');
+        // });
         /*Route::group(['controller' => HomeSection1Controller::class], function(){
             Route::get('/indexsec1', 'index')->name('superadmin.homesec1.index');
             Route::get('/sec1','create')->name('superadmin.homesec1.create');
@@ -61,6 +74,6 @@ Route::group(['middleware'=>'isSuperadmin'],function(){
             Route::get('/editsec1','edit')->name('superadmin.homesec1.edit');
             Route::post('/updatesec1/{id}','update')->name('superadmin.homesec1.update');
         });*/
-        
+
     });
 });
