@@ -48,7 +48,7 @@
                                             <li>{{ $errors->first('image') }}</li>
                                         </ul>
                                 @endif
-                             </div><!-- end col -->
+                             </div>
                         </div>
                         <hr style="height:0.5px;border:none;color:rgb(220, 220, 220);background-color:rgb(220, 220, 220);" />
                         <div class="form-group row">

@@ -32,11 +32,12 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <form action="{{route(Session::get('identity').'.service.update',$services->id)}}" method="post" enctype="multipart/form-data">
+                        <form action="{{route(Session::get('identity').'.service.update',$service->id)}}" method="post" enctype="multipart/form-data">
                             @csrf
+                            @method('patch')
                            
 
-                                    
+                                   
                             
                                     <div class="tab-pane" id="account-2">
                                         <div class="row">
@@ -55,11 +56,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-group row mb-3">
-                                                    <label class="col-md-3 col-form-label" for="fimage">Feature Image</label>
+                                                    <label class="col-md-3 col-form-label" for="fimage">Update logo</label>
                                                     <div class="col-md-9">
-                                                        <input type="file" class="dropify" data-height="150" name="fimage"/>
+                                                        <input type="file" value="{{($service->logo)}}" class="dropify" data-height="150" name="fimage"/>
+                                                        <img src="{{asset($service->logo)}}" width="200px" height="100px" alt="">
                                                     </div>
                                                 </div>
+                                                
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group mb-0 row">

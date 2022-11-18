@@ -82,7 +82,6 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        $service = Service::all();
         return view('backend.service.edit',compact('service'));
     }
 
@@ -93,9 +92,28 @@ class ServiceController extends Controller
      * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, $id)
     {
-        //
+        try{
+            $hs = Service::findOrFail($id);
+            $hs->title = $request->title;
+            $hs->details = $request->details;
+
+            if($request->file('fimage')){
+                $image = $request->file('fimage');
+                $feature_image = '/source/public/images/service/'.time().'.'.$image->extension();
+                $image->move(public_path('images/service'),$feature_image);
+                $hs->logo=$feature_image;
+            }
+
+            if($hs->save()){
+                
+                return redirect(route(Session::get('identity').'.service.index'))->with($this->responseMessage(true, null, "You have successfully updated a service."));
+            }
+         }catch(Exception $e){
+            dd($e);
+            return redirect(route(Session::get('identity').'.service.create'))->with($this->responseMessage(false, "error", "Please try again!"));
+        }
     }
 
     /**
